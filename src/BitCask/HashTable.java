@@ -35,9 +35,20 @@ class Item{
 }
 
 //哈希表类
-class HashTable{
-	HashTable(){
+class Hash{
+	Hash(){
 		hashTable = new HashMap<String, Item>();
+		backHashTable = new HashMap<String, Item>();
+	}
+	public void swap(){
+		HashMap<String, Item> temp = hashTable;
+		hashTable = backHashTable;
+		backHashTable = temp;
+		backHashTable.clear();
+	}
+	
+	public void backItem(String key, Item item){
+		backHashTable.put(key, item);
 	}
 	public void addItem(String key, Item item){
 		hashTable.put(key, item);
@@ -45,5 +56,6 @@ class HashTable{
 	public Item getItem(String key){
 		return hashTable.get(key);
 	}
-	private HashMap<String, Item> hashTable;
+	private HashMap<String, Item> hashTable;//主哈希表
+	private HashMap<String, Item> backHashTable;//用于merge操作时备份用的哈希表
 }
