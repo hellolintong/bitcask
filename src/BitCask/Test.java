@@ -28,7 +28,7 @@ class TestFileHanlder {
 
 	//测试添加元素
 	public boolean testAdd(){
-		for(int i = 0; i < 100000; ++i){
+		for(int i = 0; i < 500000; ++i){
 			testInput.put(i+"", i+"");
 			fileHandler.add(i+"", i+"");
 		}
@@ -48,7 +48,7 @@ class TestFileHanlder {
 public class Test {
 
 	public static void main(String[] args) {
-		TestFileHanlder testFileHandler = new TestFileHanlder("E:\\bitcask", 500 * 1024, 30);
+		TestFileHanlder testFileHandler = new TestFileHanlder("E:\\bitcask", 500 * 1024, 10);
 		testFileHandler.testAdd();
 		boolean k = testFileHandler.testGet();
 		System.out.println(k);
